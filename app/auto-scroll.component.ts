@@ -25,8 +25,8 @@ export class AutoScrollComponent implements AfterViewChecked {
 
     ngAfterViewChecked() {
         if (this.shouldScroll) {
-            this.autoScroll.scroll();
-            this.cdr_.detectChanges();
+            setTimeout(() => this.autoScroll.scroll(), 0);
+            //this.cdr_.detectChanges(); // is necessary if setTimeout() is not used.
             this.shouldScroll = false;
         }
     }
