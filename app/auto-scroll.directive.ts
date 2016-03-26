@@ -12,7 +12,7 @@ export class AutoscrollDirective {
 
     ngOnChanges(changes: {[propName: string]: SimpleChange}) {
         if (changes["inScrollHeight"] || changes["inClientHeight"]) {
-            this.scrollEvent.emit(true);;
+            this.scrollEvent.emit(true);
         }
     };
 
