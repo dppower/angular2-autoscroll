@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, AfterViewChecked} from "angular2/core";
+import {Component, OnInit, ViewChild, AfterViewChecked, ChangeDetectorRef} from "angular2/core";
 import {AsyncPipe} from "angular2/common";
 import {Subject, Observable} from "rxjs/Rx";
 import {AutoscrollDirective} from "./auto-scroll.directive";
@@ -23,7 +23,7 @@ import {AutoscrollDirective} from "./auto-scroll.directive";
     `],
     directives: [AutoscrollDirective]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
     chatSubject: Subject<string> = new Subject<string>();
     chat$: Observable<string[]>;
     count: number = 0;
@@ -35,7 +35,8 @@ export class AppComponent implements OnInit {
 
     ngAfterViewChecked() {
         if (this.shouldScroll) {
-            setTimeout(() => this.autoScroll.scroll(), 0);
+            //setTimeout(() => this.autoScroll.scroll(), 0);
+            this.autoScroll.scroll();
             this.shouldScroll = false;
         }
     }
